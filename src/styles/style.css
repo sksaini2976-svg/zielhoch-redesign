@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap');
+        
+body { font-family: 'Inter', sans-serif; }
+
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@keyframes spin-slow-reverse {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+.animate-spin-slow { animation: spin-slow 20s linear infinite; }
+.animate-spin-slow-reverse { animation: spin-slow-reverse 15s linear infinite; }
+
+html { scroll-behavior: smooth; }
+
+/* Animation Classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Modal Transitions */
+#contact-modal {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+#contact-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+#contact-modal.active .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+.modal-content {
+    transform: scale(0.95);
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Yield Chart Animations */
+.bar-grow {
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.reveal.active .bar-grow {
+    transform: scaleY(1);
+}
+
+.chart-card {
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transform: perspective(1000px) rotateX(10deg) rotateY(-10deg);
+}
+.chart-card:hover {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.02);
+}
+
+/* Mobile Menu styles */
+#mobile-menu {
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    transform: translateY(-20px);
+    pointer-events: none;
+    opacity: 0;
+}
+#mobile-menu.active {
+    transform: translateY(0);
+    pointer-events: auto;
+    opacity: 1;
+}
+
+/* Service Item Hover Effect */
+.service-item:hover .service-icon {
+    transform: scale(1.1);
+    color: #ff1000;
+}
+
+/* Scrollbar Utility */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+@keyframes menuOpen {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.animate-menuOpen {
+  animation: menuOpen 0.35s ease forwards;
+}
+
+@keyframes navFade {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+nav {
+  animation: navFade 0.6s ease;
+}
